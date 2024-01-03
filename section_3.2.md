@@ -420,6 +420,6 @@ for one, another in permutations(numbers, 2):
             coprimes[one] = [another]
 
 
-for number, this_coprimes in coprimes.items():
-    print(f"{number} - {', '.join(map(str, this_coprimes))}")
+for number, these_coprimes in coprimes.items():
+    print(f"{number} - {', '.join(map(str, these_coprimes))}")
 ```
