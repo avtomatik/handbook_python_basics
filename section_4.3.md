@@ -24,22 +24,22 @@ def recursive_digit_sum(number: int) -> int:
 ```python
 def make_equation(*numbers: tuple[int]) -> str:
     if len(numbers) == 1:
-        return f"{numbers[-1]}"
+        return f'{numbers[-1]}'
     if numbers:
-        return f"({make_equation(*numbers[:-1])}) * x + {numbers[-1]}"
+        return f'({make_equation(*numbers[:-1])}) * x + {numbers[-1]}'
 ```
 
 ### D. Декор результата
 ```python
 def answer(func):
     def decorated(*args, **kwargs):
-        return f"Результат функции: {func(*args, **kwargs)}"
+        return f'Результат функции: {func(*args, **kwargs)}'
     return decorated
 ```
 
 ### E. Накопление результата
 ```python
-def result_accumulator(func, method="accumulate"):
+def result_accumulator(func, method='accumulate'):
 
     stack = []
 
@@ -49,7 +49,7 @@ def result_accumulator(func, method="accumulate"):
 
         stack.append(func(*args, **kwargs))
 
-        if method == "drop":
+        if method == 'drop':
             final, stack = stack[:], []
             return final
 
@@ -93,7 +93,7 @@ def same_type(func):
 
     def decorated(*args):
         if len(set(map(type, args))) > 1:
-            print("Обнаружены различные типы данных")
+            print('Обнаружены различные типы данных')
             return False
         return func(*args)
 

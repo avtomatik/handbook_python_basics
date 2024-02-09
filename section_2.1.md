@@ -4,12 +4,12 @@
 
 ### A. Привет, Яндекс!
 ```python
-print("Привет, Яндекс!")
+print('Привет, Яндекс!')
 ```
 
 ### B. Привет, всем!
 ```python
-print(f"Привет, {input('Как Вас зовут?')}")
+print(f'Привет, {input("Как Вас зовут?")}')
 ```
 
 ### C. Излишняя автоматизация
@@ -62,7 +62,7 @@ print(
 ### G. Делу — время, потехе — час
 ```python
 for _ in range(int(input())):
-    print("Купи слона!")
+    print('Купи слона!')
 ```
 
 ### H. Наказание
@@ -166,7 +166,7 @@ HEADERS = '''Товар:
 Цена:
 Итого:
 Внесено:
-Сдача:'''
+Сдача:'''.split('\n')
 
 
 STRINGS = (
@@ -180,8 +180,8 @@ STRINGS = (
 
 print(f'{"Чек":=^{WIDTH}}')
 
-for header, string in zip(HEADERS.split('\n'), STRINGS):
-    print(f'{header}'f'{string:>{WIDTH - len(header)}}')
+for header, string in zip(HEADERS, STRINGS):
+    print(f'{header}{string:>{WIDTH - len(header)}}')
 
 print(f'{"":=^{WIDTH}}')
 ```

@@ -4,15 +4,15 @@
 
 ### A. Раз, два, три! Ёлочка, гори!
 ```python
-while input() != "Три!":
-    print("Режим ожидания...")
-print("Ёлочка, гори!")
+while input() != 'Три!':
+    print('Режим ожидания...')
+print('Ёлочка, гори!')
 ```
 
 ### B. Зайка — 3
 ```python
 feeds = []
-while (feed := input()) != "Приехали!":
+while (feed := input()) != 'Приехали!':
     feeds.append(feed)
 
 print(sum(map(lambda _: 'зайка' in _, feeds)))
@@ -97,7 +97,7 @@ DIRECTIONS_MAP = dict(zip(DIRECTIONS, [1, 1, -1, -1]))
 
 
 feeds = []
-while (feed := input()) != "СТОП":
+while (feed := input()) != 'СТОП':
     feeds.append(feed)
 
 
@@ -143,7 +143,7 @@ def is_prime(number: int) -> bool:
     return True
 
 
-print("YES" if is_prime(int(input())) else "NO")
+print('YES' if is_prime(int(input())) else 'NO')
 ```
 
 ### O. Зайка - 4

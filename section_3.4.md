@@ -19,7 +19,7 @@ for left, right in zip(input().split(', '), input().split(', ')):
 current, stop, step = map(float, input().split())
 
 while current <= stop:
-    print(f"{current:,.2f}")
+    print(f'{current:,.2f}')
     current += step
 ```
 
@@ -53,17 +53,17 @@ from itertools import product
 
 
 SUITS = [
-    "пик",
-    "треф",
-    "бубен",
-    "червей",
+    'пик',
+    'треф',
+    'бубен',
+    'червей',
 ]
 
 DECKS = list(map(str, range(2, 11))) + [
-    "валет",
-    "дама",
-    "король",
-    "туз",
+    'валет',
+    'дама',
+    'король',
+    'туз',
 ]
 
 SUITS.remove(input())
@@ -78,17 +78,17 @@ from itertools import product
 
 
 SUITS = [
-    "пик",
-    "треф",
-    "бубен",
-    "червей",
+    'пик',
+    'треф',
+    'бубен',
+    'червей',
 ]
 
 DECKS = list(map(str, range(2, 11))) + [
-    "валет",
-    "дама",
-    "король",
-    "туз",
+    'валет',
+    'дама',
+    'король',
+    'туз',
 ]
 
 SUITS.remove(input())
@@ -169,7 +169,7 @@ rows, cols = int(input()), int(input())
 width = len(str(rows * cols))
 
 for batch in batched(range(1, 1 + rows * cols), cols):
-    print(' '.join(map(lambda _: f"{_:>{width}}", batch)))
+    print(' '.join(map(lambda _: f'{_:>{width}}', batch)))
 ```
 
 ### L. Список покупок 2.0
@@ -224,17 +224,17 @@ for permutation in permutations(sorted(items), 3):
 from itertools import combinations, count, product
 
 SUITS = {
-    "пики": "пик",
-    "трефы": "треф",
-    "буби": "бубен",
-    "черви": "червей",
+    'пики': 'пик',
+    'трефы': 'треф',
+    'буби': 'бубен',
+    'черви': 'червей',
 }
 
 DECKS = list(map(str, range(2, 11))) + [
-    "валет",
-    "дама",
-    "король",
-    "туз",
+    'валет',
+    'дама',
+    'король',
+    'туз',
 ]
 
 NUMBER_TO_DISPLAY = 10
@@ -263,17 +263,17 @@ for deal in combinations(
 from itertools import combinations, product
 
 SUITS = {
-    "пики": "пик",
-    "трефы": "треф",
-    "буби": "бубен",
-    "черви": "червей",
+    'пики': 'пик',
+    'трефы': 'треф',
+    'буби': 'бубен',
+    'черви': 'червей',
 }
 
 DECKS = list(map(str, range(2, 11))) + [
-    "валет",
-    "дама",
-    "король",
-    "туз",
+    'валет',
+    'дама',
+    'король',
+    'туз',
 ]
 
 
@@ -304,7 +304,7 @@ from itertools import product
 
 expression = input()
 
-print("a b c f")
+print('a b c f')
 
 for triplet in product([0, 1], repeat=3):
     a, b, c = triplet
@@ -319,12 +319,12 @@ expression = input()
 
 variables = tuple(filter(str.isupper, sorted(set(expression))))
 
-print(" ".join((*variables, "F")))
+print(' '.join((*variables, 'F')))
 
 for values in product([0, 1], repeat=len(tuple(variables))):
     print(
         *values,
-        int(eval(expression, {"__builtins__": dict(zip(variables, values))}))
+        int(eval(expression, {'__builtins__': dict(zip(variables, values))}))
     )
 ```
 
@@ -381,7 +381,7 @@ def parse(expression: str) -> str:
 
     OPERATIONS = OPERATIONS_UNR | OPERATIONS_BIN
 
-    OPERATIONS_EXT = [*OPERATIONS_UNR, *OPERATIONS_BIN, *"( )".split()]
+    OPERATIONS_EXT = [*OPERATIONS_UNR, *OPERATIONS_BIN, *'( )'.split()]
 
     output_queue, operator_stack = [], []
 
@@ -389,25 +389,25 @@ def parse(expression: str) -> str:
         if token not in OPERATIONS_EXT:
             output_queue.append(token)
         elif token in OPERATIONS:
-            if (operator_stack and operator_stack[0] != "(") and \
+            if (operator_stack and operator_stack[0] != '(') and \
                 (OPERATIONS.get(operator_stack[0]) > OPERATIONS.get(token) or
                  (OPERATIONS.get(operator_stack[0]) == OPERATIONS.get(token)
                   and IS_LEFT_ASSOCIATIVE.get(token))):
                 output_queue.append(operator_stack.pop(0))
             operator_stack.insert(0, token)
-        elif token == "(":
+        elif token == '(':
             operator_stack.insert(0, token)
-        elif token == ")":
-            if operator_stack[0] != "(":
+        elif token == ')':
+            if operator_stack[0] != '(':
                 assert operator_stack
                 output_queue.append(operator_stack.pop(0))
-            assert operator_stack[0] == "("
-            operator_stack.remove("(")
+            assert operator_stack[0] == '('
+            operator_stack.remove('(')
 
-    assert output_queue[0] != "("
+    assert output_queue[0] != '('
     output_queue.extend(operator_stack)
 
-    return " ".join(output_queue)
+    return ' '.join(output_queue)
 
 
 def evaluate(expression: str, scope: dict) -> int:
@@ -442,30 +442,30 @@ def evaluate(expression: str, scope: dict) -> int:
     for token in expression.split():
         if token in OPERATIONS_UNR:
             operand = output_queue.pop()
-            if token == "not":
+            if token == 'not':
                 output_queue.append(
-                    eval(f"not {operand}", scope)
+                    eval(f'not {operand}', scope)
                 )
         elif token in OPERATIONS_BIN:
             operand_r, operand_l = output_queue.pop(), output_queue.pop()
-            if token == "^":
+            if token == '^':
                 output_queue.append(
-                    eval(f"sum(({operand_l}, {operand_r})) % 2", scope)
+                    eval(f'sum(({operand_l}, {operand_r})) % 2', scope)
                 )
-            elif token == "->":
+            elif token == '->':
                 output_queue.append(
                     eval(
-                        f"0 if ({operand_l}, {operand_r})  == (1, 0) else 1",
+                        f'0 if ({operand_l}, {operand_r})  == (1, 0) else 1',
                         scope
                     )
                 )
-            elif token == "~":
+            elif token == '~':
                 output_queue.append(
-                    eval(f"(1 + sum(({operand_l}, {operand_r}))) % 2", scope)
+                    eval(f'(1 + sum(({operand_l}, {operand_r}))) % 2', scope)
                 )
             else:
                 output_queue.append(
-                    eval(f"{operand_l} {token} {operand_r}", scope)
+                    eval(f'{operand_l} {token} {operand_r}', scope)
                 )
         else:
             output_queue.append(token)
@@ -476,11 +476,11 @@ def evaluate(expression: str, scope: dict) -> int:
 def main():
     RANGE = [0, 1]
 
-    expression = input().replace("(", "( ").replace(")", " )")
+    expression = input().replace('(', '( ').replace(')', ' )')
 
     variables = tuple(filter(str.isupper, sorted(set(expression))))
 
-    print(" ".join((*variables, "F")))
+    print(' '.join((*variables, 'F')))
 
     for values in product(RANGE, repeat=len(tuple(variables))):
         kwargs = dict(zip(variables, values))

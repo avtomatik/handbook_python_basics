@@ -42,7 +42,7 @@ class RedButton:
         self.counter = 0
 
     def click(self):
-        print("Тревога!")
+        print('Тревога!')
         self.counter += 1
 
     def count(self):
@@ -55,9 +55,9 @@ class Programmer:
 
     def __init__(self, name, grade):
         self.BASE_HOURLY_WAGES = {
-            "Junior": 10,
-            "Middle": 15,
-            "Senior": 20,
+            'Junior': 10,
+            'Middle': 15,
+            'Senior': 20,
         }
         self.name = name
         self.grade = grade
@@ -70,17 +70,17 @@ class Programmer:
         self.wage += self.hourly_wage * time
 
     def rise(self):
-        if self.grade == "Senior":
+        if self.grade == 'Senior':
             self.hourly_wage += 1
-        elif self.grade == "Junior":
-            self.grade = "Middle"
+        elif self.grade == 'Junior':
+            self.grade = 'Middle'
             self.hourly_wage = self.BASE_HOURLY_WAGES.get(self.grade, 0)
-        elif self.grade == "Middle":
-            self.grade = "Senior"
+        elif self.grade == 'Middle':
+            self.grade = 'Senior'
             self.hourly_wage = self.BASE_HOURLY_WAGES.get(self.grade, 0)
 
     def info(self):
-        return f"{self.name} {self.time}ч. {self.wage}тгр."
+        return f'{self.name} {self.time}ч. {self.wage}тгр.'
 ```
 
 ### E. Классный прямоугольник
@@ -168,10 +168,10 @@ class Rectangle:
 class Checkers:
 
     def __init__(self):
-        self.cols, self.rows = "ABCDEFGH", "12345678"
+        self.cols, self.rows = 'ABCDEFGH', '12345678'
 
         pre_board = {
-            self._flatten(f"{col}{row}"): self._set_out(f"{col}{row}")
+            self._flatten(f'{col}{row}'): self._set_out(f'{col}{row}')
             for col in self.cols
             for row in self.rows
         }
@@ -179,14 +179,14 @@ class Checkers:
         self.board = list(dict(sorted(pre_board.items())).values())
 
     def move(self, f, t):
-        if self.board[self._flatten(t)].status() in ["X"]:
+        if self.board[self._flatten(t)].status() in ['X']:
             self.board[self._flatten(t)] = self.board[self._flatten(f)]
-            self.board[self._flatten(f)] = Cell("X")
+            self.board[self._flatten(f)] = Cell('X')
 
     def get_cell(self, p):
         return self.board[self._flatten(p)]
 
-    def _flatten(self, address: str, letters: str = "ABCDEFGH") -> int:
+    def _flatten(self, address: str, letters: str = 'ABCDEFGH') -> int:
         col, row = address
         return ord(col) % 64 + (int(row) - 1) * len(letters) - 1
 
@@ -194,18 +194,18 @@ class Checkers:
         col, row = address
         return (ord(col) % 64 + int(row)) % 2 == 0
 
-    def _set_out(self, address: str, letters: str = "ABCDEFGH") -> str:
+    def _set_out(self, address: str, letters: str = 'ABCDEFGH') -> str:
 
         flag, characteristic, xn = self._is_main(
             address), self._flatten(address), len(letters)
 
         if flag and characteristic <= 3 * xn:
-            return Cell("W")
+            return Cell('W')
 
         if flag and characteristic > 5 * xn:
-            return Cell("B")
+            return Cell('B')
 
-        return Cell("X")
+        return Cell('X')
 
 
 class Cell:

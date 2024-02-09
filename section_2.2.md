@@ -9,11 +9,11 @@ FEEDBACK = {
     'плохо': 'Всё наладится!',
 }
 
-NEW_LINE = "\n"
+NEW_LINE = '\n'
 
-print(f"Здравствуйте, {input(f'Как Вас зовут?{NEW_LINE}')}!")
+print(f'Здравствуйте, {input(f"Как Вас зовут?{NEW_LINE}")}!')
 
-print(f"{FEEDBACK.get(input(f'Как дела?{NEW_LINE}'))}")
+print(f'{FEEDBACK.get(input(f"Как дела?{NEW_LINE}"))}')
 ```
 
 ### B. Кто быстрее?
@@ -180,19 +180,19 @@ import math
 
 def find_roots(a: float, b: float, c: float) -> str:
     if a == .0 and b == .0 and c == .0:
-        return "Infinite solutions"
+        return 'Infinite solutions'
 
     elif a == .0 and b != .0:
         X = [-c / b]
 
     elif a == .0:
-        return "No solution"
+        return 'No solution'
 
     else:
         d = b ** 2 - 4 * a * c
 
         if d < .0:
-            return "No solution"
+            return 'No solution'
         elif d == .0:
             X = [-b / (2 * a)]
         else:

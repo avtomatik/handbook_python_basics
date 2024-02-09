@@ -7,7 +7,7 @@
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 print(get(f'{SCHEME}://127.0.0.1:5000/').text)
 ```
@@ -17,7 +17,7 @@ print(get(f'{SCHEME}://127.0.0.1:5000/').text)
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 entries, feed = [], input()
 
@@ -32,7 +32,7 @@ print(sum(entries))
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 print(
     sum(filter(lambda _: isinstance(_, int), get(f'{SCHEME}://{input()}').json()))
@@ -44,9 +44,9 @@ print(
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
-print(get(f'{SCHEME}://{input()}').json().get(input(), "No data"))
+print(get(f'{SCHEME}://{input()}').json().get(input(), 'No data'))
 ```
 
 ### E. Суммирование ответов 3
@@ -56,7 +56,7 @@ from sys import stdin
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 feed = list(map(lambda _: _.rstrip('\n'), stdin))
 
@@ -72,7 +72,7 @@ print(
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 data = get(f'{SCHEME}://{input()}/users').json()
 
@@ -87,14 +87,14 @@ from sys import stdin
 from requests import get
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 response = get(f'{SCHEME}://{input()}/users/{input()}')
 
 if response:
     print(stdin.read().format(**response.json()))
 else:
-    print("Пользователь не найден")
+    print('Пользователь не найден')
 ```
 
 ### H. Регистрация нового пользователя
@@ -105,14 +105,14 @@ from sys import stdin
 from requests import post
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
-HEADERS = "username last_name first_name email".split()
+HEADERS = 'username last_name first_name email'.split()
 
 
 post(
     f'{SCHEME}://{input()}/users',
-    data=dumps(dict(zip(HEADERS, stdin.read().split("\n"))))
+    data=dumps(dict(zip(HEADERS, stdin.read().split('\n'))))
 )
 ```
 
@@ -124,8 +124,8 @@ from sys import stdin
 from requests import put
 
 
-SCHEME = "http"
-SEP = "="
+SCHEME = 'http'
+SEP = '='
 
 
 url = f'{SCHEME}://{input()}/users/{input()}'
@@ -133,7 +133,7 @@ url = f'{SCHEME}://{input()}/users/{input()}'
 patch = {}
 
 for line in stdin:
-    key, value = line.rstrip("\n").split(SEP)
+    key, value = line.rstrip('\n').split(SEP)
     patch[key] = value
 
 
@@ -145,7 +145,7 @@ put(url, data=dumps(patch))
 from requests import delete
 
 
-SCHEME = "http"
+SCHEME = 'http'
 
 
 delete(f'{SCHEME}://{input()}/users/{input()}')

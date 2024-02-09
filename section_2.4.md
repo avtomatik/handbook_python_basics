@@ -18,7 +18,7 @@ feed = int(input())
 
 for i in range(feed):
     for j in range(feed):
-        print(f"{(1 + j)} * {(1 + i)} = {(1 + i) * (1 + j)}")
+        print(f'{(1 + j)} * {(1 + i)} = {(1 + i) * (1 + j)}')
 ```
 
 ### C. Новогоднее настроение
@@ -107,8 +107,8 @@ print(min(map(lambda _: gcd(*_), combinations(feed, 2))))
 ```python
 for j in range(int(input())):
     for i in range(3 + j, 0, -1):
-        print(f"До старта {i} секунд(ы)")
-    print(f"Старт {1 + j}!!!")
+        print(f'До старта {i} секунд(ы)')
+    print(f'Старт {1 + j}!!!')
 ```
 
 ### H. Максимальная сумма
@@ -182,7 +182,7 @@ rows, cols = int(input()), int(input())
 width = len(str(rows * cols))
 
 for row in range(rows):
-    print(' '.join(f"{1 + row * cols + col:>{width}}" for col in range(cols)))
+    print(' '.join(f'{1 + row * cols + col:>{width}}' for col in range(cols)))
 ```
 
 ### M. Числовой прямоугольник 2.0
@@ -192,7 +192,7 @@ rows, cols = int(input()), int(input())
 width = len(str(rows * cols))
 
 for row in range(rows):
-    print(' '.join(f"{1 + row + rows * col:>{width}}" for col in range(cols)))
+    print(' '.join(f'{1 + row + rows * col:>{width}}' for col in range(cols)))
 ```
 
 ### N. Числовая змейка
@@ -209,7 +209,7 @@ width = len(str(rows * cols))
 
 for row in range(rows):
     print(
-        ' '.join(f"{get_elem(col, cols, row):>{width}}" for col in range(cols))
+        ' '.join(f'{get_elem(col, cols, row):>{width}}' for col in range(cols))
     )
 ```
 
@@ -227,7 +227,7 @@ width = len(str(rows * cols))
 
 for row in range(rows):
     print(
-        ' '.join(f"{get_elem(row, rows, col):>{width}}" for col in range(cols))
+        ' '.join(f'{get_elem(row, rows, col):>{width}}' for col in range(cols))
     )
 ```
 
@@ -240,11 +240,11 @@ for row in range(2 * dim - 1):
     if row % 2 == 0:
         print(
             '|'.join(
-                f"{(1 + row // 2) * (1 + col):^{width}}" for col in range(dim)
+                f'{(1 + row // 2) * (1 + col):^{width}}' for col in range(dim)
             )
         )
     else:
-        print(f"{'':{'-'}^{(1 + width) * dim - 1}}")
+        print(f'{"":{"-"}^{(1 + width) * dim - 1}}')
 ```
 
 ### Q. А роза упала на лапу Азора 3.0
@@ -291,7 +291,7 @@ def get_fir_tree(feed: int) -> list[list[int | None]]:
 def main(fir_tree: list[list[int | None]], width: int) -> None:
     for branch in fir_tree:
         if branch:
-            print(f"{' '.join(map(str, branch)):^{width}}")
+            print(f'{" ".join(map(str, branch)):^{width}}')
 
 
 if __name__ == '__main__':
@@ -320,7 +320,7 @@ width = len(str((1 + dim) // 2))
 square = get_square(dim)
 
 for row in square:
-    print(' '.join(map(lambda _: f"{_:>{width}}", map(str, row))))
+    print(' '.join(map(lambda _: f'{_:>{width}}', map(str, row))))
 ```
 
 ### T. Математическая выгода

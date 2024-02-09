@@ -6,7 +6,7 @@
 ```python
 try:
     func()
-    print("No Exceptions")
+    print('No Exceptions')
 except Exception as exception:
     print(exception.__class__.__name__)
 ```
@@ -16,7 +16,7 @@ except Exception as exception:
 try:
     func(True, None)
 except Exception:
-    print("Ура! Ошибка!")
+    print('Ура! Ошибка!')
 ```
 
 ### C. Ломать — не строить 2
@@ -30,7 +30,7 @@ class Breaker:
 try:
     func(Breaker())
 except Exception:
-    print("Ура! Ошибка!")
+    print('Ура! Ошибка!')
 ```
 
 ### D. Контроль параметров
@@ -231,17 +231,17 @@ def username_validation(username):
 
 
 def user_validation(**kwargs):
-    if set(locals()["kwargs"].keys()) != {"last_name", "first_name", "username"}:
+    if set(locals()['kwargs'].keys()) != {'last_name', 'first_name', 'username'}:
         raise KeyError
 
-    if not all(isinstance(_, str) for _ in locals()["kwargs"].values()):
+    if not all(isinstance(_, str) for _ in locals()['kwargs'].values()):
         raise TypeError
 
-    name_validation(locals()["kwargs"]["last_name"])
-    name_validation(locals()["kwargs"]["first_name"])
-    username_validation(locals()["kwargs"]["username"])
+    name_validation(locals()['kwargs']['last_name'])
+    name_validation(locals()['kwargs']['first_name'])
+    username_validation(locals()['kwargs']['username'])
 
-    return locals()["kwargs"]
+    return locals()['kwargs']
 ```
 
 ### J. Валидация пароля

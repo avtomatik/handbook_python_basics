@@ -78,39 +78,39 @@ for palindrome in palindromes:
 ### F. Транслитерация 2.0
 ```python
 MAP = {
-    "А": "A",
-    "Б": "B",
-    "В": "V",
-    "Г": "G",
-    "Д": "D",
-    "Е": "E",
-    "Ё": "E",
-    "Ж": "ZH",
-    "З": "Z",
-    "И": "I",
-    "Й": "I",
-    "К": "K",
-    "Л": "L",
-    "М": "M",
-    "Н": "N",
-    "О": "O",
-    "П": "P",
-    "Р": "R",
-    "С": "S",
-    "Т": "T",
-    "У": "U",
-    "Ф": "F",
-    "Х": "KH",
-    "Ц": "TC",
-    "Ч": "CH",
-    "Ш": "SH",
-    "Щ": "SHCH",
-    "Ъ": "",
-    "Ы": "Y",
-    "Ь": "",
-    "Э": "E",
-    "Ю": "IU",
-    "Я": "IA",
+    'А': 'A',
+    'Б': 'B',
+    'В': 'V',
+    'Г': 'G',
+    'Д': 'D',
+    'Е': 'E',
+    'Ё': 'E',
+    'Ж': 'ZH',
+    'З': 'Z',
+    'И': 'I',
+    'Й': 'I',
+    'К': 'K',
+    'Л': 'L',
+    'М': 'M',
+    'Н': 'N',
+    'О': 'O',
+    'П': 'P',
+    'Р': 'R',
+    'С': 'S',
+    'Т': 'T',
+    'У': 'U',
+    'Ф': 'F',
+    'Х': 'KH',
+    'Ц': 'TC',
+    'Ч': 'CH',
+    'Ш': 'SH',
+    'Щ': 'SHCH',
+    'Ъ': '',
+    'Ы': 'Y',
+    'Ь': '',
+    'Э': 'E',
+    'Ю': 'IU',
+    'Я': 'IA',
 }
 
 
@@ -122,11 +122,11 @@ def transliterate(letter: str, mapping: dict[str, str] = MAP) -> str:
     return letter
 
 
-with open("transliteration.txt", "w", encoding="utf-8") as file_exp:
-    with open("cyrillic.txt", encoding="utf-8") as file_src:
+with open('transliteration.txt', 'w', encoding='utf-8') as file_exp:
+    with open('cyrillic.txt', encoding='utf-8') as file_src:
         for line in file_src.readlines():
             file_exp.write(
-                "".join(
+                ''.join(
                     map(lambda _: transliterate(_), line)
                 )
             )
@@ -139,7 +139,7 @@ def get_numbers(file_name: str) -> list[int]:
 
     with open(file_name) as file:
         for _ in file.readlines():
-            numbers.extend(map(int, _.rstrip("\n").split()))
+            numbers.extend(map(int, _.rstrip('\n').split()))
     return numbers
 
 
@@ -154,7 +154,7 @@ def main():
     print(round(sum(numbers) / len(numbers), 2))
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
 ```
 
@@ -173,11 +173,11 @@ for file_name in file_names:
 
     with open(file_name) as file:
         for _ in file.readlines():
-            words.extend(_.rstrip("\n").split())
+            words.extend(_.rstrip('\n').split())
 
     words_by_files[file_name] = words
 
-with open(file_name_exp, "w") as file:
+with open(file_name_exp, 'w') as file:
     for word in sorted(
         set(
             words_by_files[file_names[0]]
@@ -194,38 +194,32 @@ NUMBER = 2
 
 file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
 
-with open(file_name_exp, "w", encoding="utf-8") as file_exp:
-    with open(file_name_src, encoding="utf-8") as file_src:
+with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
+    with open(file_name_src, encoding='utf-8') as file_src:
         for line in file_src.readlines():
-            line_clean = line.rstrip("\n")
+            line_clean = line.rstrip('\n')
             if line_clean:
-                if "\t" in line_clean:
+                if '\t' in line_clean:
                     print(
-                        " ".join(line_clean.replace("\t", "").split()),
+                        ' '.join(line_clean.replace('\t', '').split()),
                         file=file_exp
                     )
                 else:
-                    print(" ".join(line_clean.split()), file=file_exp)
+                    print(' '.join(line_clean.split()), file=file_exp)
 ```
 
 ### J. Хвост
 ```python
-NUMBER = 2
+file_name, number_tail = input(), int(input())
 
-file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
 
-with open(file_name_exp, "w", encoding="utf-8") as file_exp:
-    with open(file_name_src, encoding="utf-8") as file_src:
-        for line in file_src.readlines():
-            line_clean = line.rstrip("\n")
-            if line_clean:
-                if "\t" in line_clean:
-                    print(
-                        " ".join(line_clean.replace("\t", "").split()),
-                        file=file_exp
-                    )
-                else:
-                    print(" ".join(line_clean.split()), file=file_exp)
+with open(file_name, 'rb') as file:
+    number_lines = sum(map(bool, file))
+
+with open(file_name, encoding='utf-8') as file:
+    for _, line in enumerate(file.readlines(), 1):
+        if _ > number_lines - number_tail:
+            print(line.rstrip('\n'))
 ```
 
 ### K. Файловая статистика 2.0
@@ -238,7 +232,7 @@ def get_numbers(file_name: str) -> list[int]:
 
     with open(file_name) as file:
         for _ in file.readlines():
-            numbers.extend(map(int, _.rstrip("\n").split()))
+            numbers.extend(map(int, _.rstrip('\n').split()))
     return numbers
 
 
@@ -256,11 +250,11 @@ def get_number_struct(numbers: list[int]) -> tuple[int, float]:
 def main():
     NUMBER = 2
 
-    HEADERS = "count positive_count min max sum average"
+    HEADERS = 'count positive_count min max sum average'
 
     file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
 
-    with open(file_name_exp, "w", encoding="utf-8") as file_exp:
+    with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
         json.dump(
             dict(
                 zip(
@@ -274,7 +268,7 @@ def main():
         )
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
 ```
 
@@ -308,20 +302,20 @@ file_names = [input() for _ in range(NUMBER)]
 file_name_src = file_names.pop(0)
 
 for file_name, parity in zip(file_names, Parity):
-    with open(file_name, "w", encoding="utf-8") as file:
-        with open(file_name_src, encoding="utf-8") as file_src:
+    with open(file_name, 'w', encoding='utf-8') as file:
+        with open(file_name_src, encoding='utf-8') as file_src:
             lines = [
                 list(
                     filter(
                         lambda _: classify(_) == parity,
-                        line.rstrip("\n").split()
+                        line.rstrip('\n').split()
                     )
                 )
                 for line in file_src.readlines()
             ]
 
         for line in lines:
-            print(" ".join(line), file=file)
+            print(' '.join(line), file=file)
 ```
 
 ### M. Обновление данных
@@ -333,13 +327,13 @@ from sys import stdin
 file_name = input()
 
 
-with open(file_name, encoding="utf-8") as file:
+with open(file_name, encoding='utf-8') as file:
     data = json.load(file)
 
 
-with open(file_name, "w", encoding="utf-8") as file:
+with open(file_name, 'w', encoding='utf-8') as file:
     json.dump(
-        data | dict(map(lambda _: _.rstrip("\n").split(" == "), stdin)),
+        data | dict(map(lambda _: _.rstrip('\n').split(' == '), stdin)),
         file,
         ensure_ascii=False,
         indent=4
@@ -354,12 +348,12 @@ import json
 file_name = input()
 
 
-with open(file_name, encoding="utf-8") as file:
-    data = {_.pop("name"): _ for _ in json.load(file)}
+with open(file_name, encoding='utf-8') as file:
+    data = {_.pop('name'): _ for _ in json.load(file)}
 
 
-with open(input(), encoding="utf-8") as file:
-    data_upd = {_.pop("name"): _ for _ in json.load(file)}
+with open(input(), encoding='utf-8') as file:
+    data_upd = {_.pop('name'): _ for _ in json.load(file)}
 
 
 for name, attributes in data_upd.items():
@@ -373,7 +367,7 @@ for name, attributes in data_upd.items():
                 data[name][key] = max(data[name][key], value)
 
 
-with open(file_name, "w", encoding="utf-8") as file:
+with open(file_name, 'w', encoding='utf-8') as file:
     json.dump(data, file, ensure_ascii=False, indent=4)
 ```
 
@@ -383,25 +377,25 @@ import json
 from sys import stdin
 
 
-FILE_NAME = "scoring.json"
+FILE_NAME = 'scoring.json'
 
-with open(FILE_NAME, encoding="utf-8") as file:
+with open(FILE_NAME, encoding='utf-8') as file:
 
     scores_by_patterns = []
 
     for test_group in json.load(file):
-        scores = test_group.pop("points")
-        test_pairs = test_group.get("tests")
+        scores = test_group.pop('points')
+        test_pairs = test_group.get('tests')
         for test_pair in test_pairs:
             scores_by_patterns.append(
-                (test_pair.get("pattern"), scores // len(test_pairs))
+                (test_pair.get('pattern'), scores // len(test_pairs))
             )
 
 
 tests_success = list(
     filter(
         lambda _: _[0] == _[-1][0],
-        zip(map(lambda _: _.rstrip("\n"), stdin.readlines()), scores_by_patterns)
+        zip(map(lambda _: _.rstrip('\n'), stdin.readlines()), scores_by_patterns)
     )
 )
 
@@ -421,23 +415,23 @@ qwery = feed.pop(0)
 file_names = []
 
 for file_name in feed:
-    with open(file_name, encoding="utf-8") as file:
-        if qwery.lower() in " ".join(filter(bool, file.read().lower().split())):
+    with open(file_name, encoding='utf-8') as file:
+        if qwery.lower() in ' '.join(filter(bool, file.read().lower().split())):
             file_names.append(file_name)
 
 if file_names:
     for file_name in file_names:
         print(file_name)
 else:
-    print("404. Not Found")
+    print('404. Not Found')
 ```
 
 ### Q. Прятки
 ```python
-FILE_NAME = "secret.txt"
+FILE_NAME = 'secret.txt'
 
-with open(FILE_NAME, encoding="utf-8") as file:
-    print("".join(chr(ord(_) % 2 ** 8) for _ in file.read()))
+with open(FILE_NAME, encoding='utf-8') as file:
+    print(''.join(chr(ord(_) % 2 ** 8) for _ in file.read()))
 ```
 
 ### R. Сколько вешать в байтах?
@@ -448,15 +442,15 @@ from pathlib import Path
 
 def get_repr(volume_bytes: int) -> str:
     if volume_bytes < 2 ** 0:
-        print(f"{ceil(volume_bytes * 2 ** 3)}б")
+        print(f'{ceil(volume_bytes * 2 ** 3)}б')
     elif volume_bytes < 2 ** 10:
-        print(f"{ceil(volume_bytes)}Б")
+        print(f'{ceil(volume_bytes)}Б')
     elif volume_bytes < 2 ** 20:
-        print(f"{ceil(volume_bytes / 2 ** 10)}КБ")
+        print(f'{ceil(volume_bytes / 2 ** 10)}КБ')
     elif volume_bytes < 2 ** 30:
-        print(f"{ceil(volume_bytes / 2 ** 20)}МБ")
+        print(f'{ceil(volume_bytes / 2 ** 20)}МБ')
     else:
-        print(f"{ceil(volume_bytes / 2 ** 30)}ГБ")
+        print(f'{ceil(volume_bytes / 2 ** 30)}ГБ')
 
 
 get_repr(Path(input()).stat().st_size)
@@ -483,22 +477,22 @@ def do_caesar_shift(symbol: str, shift: int) -> str:
     return symbol
 
 
-file_name_src, file_name_exp = "public.txt", "private.txt"
+file_name_src, file_name_exp = 'public.txt', 'private.txt'
 shift = int(input())
 
-with open(file_name_exp, "w", encoding="utf-8") as file_exp:
-    with open(file_name_src, encoding="utf-8") as file_src:
+with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
+    with open(file_name_src, encoding='utf-8') as file_src:
         print(
-            "".join(do_caesar_shift(_, shift) for _ in file_src.read()),
+            ''.join(do_caesar_shift(_, shift) for _ in file_src.read()),
             file=file_exp
         )
 ```
 
 ### T. Файловая сумма
 ```python
-FILE_NAME = "numbers.num"
+FILE_NAME = 'numbers.num'
 
-with open(FILE_NAME, "rb") as file:
+with open(FILE_NAME, 'rb') as file:
     numbers = []
     while True:
         chunk = file.read(2)

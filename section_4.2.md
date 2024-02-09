@@ -43,9 +43,9 @@ def gcd(*args):
 
 ### D. Имя of the month 2.0
 ```python
-def month(number: int, language: str = "ru") -> str:
+def month(number: int, language: str = 'ru') -> str:
     MONTHS = {
-        "ru": [
+        'ru': [
             'январь',
             'февраль',
             'март',
@@ -59,7 +59,7 @@ def month(number: int, language: str = "ru") -> str:
             'ноябрь',
             'декабрь'
         ],
-        "en": [
+        'en': [
             'january',
             'february',
             'march',
@@ -80,7 +80,7 @@ def month(number: int, language: str = "ru") -> str:
 
 ### E. Подготовка данных
 ```python
-def to_string(*args, sep: str = " ", end: str = "\n") -> str:
+def to_string(*args, sep: str = ' ', end: str = '\n') -> str:
     return f'{sep.join(map(str, args))}{end}'
 ```
 
@@ -90,12 +90,12 @@ def order(*beverages: tuple[str]) -> str:
     global in_stock
 
     FORMULAE = {
-        "Эспрессо": {"coffee": 1},
-        "Капучино": {"coffee": 1, "milk": 3},
-        "Макиато": {"coffee": 2, "milk": 1},
-        "Кофе по-венски": {"coffee": 1, "cream": 2},
-        "Латте Макиато": {"coffee": 1, "milk": 2, "cream": 1},
-        "Кон Панна": {"coffee": 1, "cream": 1},
+        'Эспрессо': {'coffee': 1},
+        'Капучино': {'coffee': 1, 'milk': 3},
+        'Макиато': {'coffee': 2, 'milk': 1},
+        'Кофе по-венски': {'coffee': 1, 'cream': 2},
+        'Латте Макиато': {'coffee': 1, 'milk': 2, 'cream': 1},
+        'Кон Панна': {'coffee': 1, 'cream': 1},
     }
 
     for beverage in beverages:
@@ -108,7 +108,7 @@ def order(*beverages: tuple[str]) -> str:
                 for key, value in in_stock.items()
             }
             return beverage
-    return "К сожалению, не можем предложить Вам напиток"
+    return 'К сожалению, не можем предложить Вам напиток'
 ```
 
 ### G. В эфире рубрика «Эксперименты»
@@ -159,5 +159,5 @@ def secret_replace(string: str, **kwargs: dict[str, str]) -> str:
             next(swap_cycle)
         ) if swap_cycle else enciphered.append(letter)
 
-    return "".join(enciphered)
+    return ''.join(enciphered)
 ```

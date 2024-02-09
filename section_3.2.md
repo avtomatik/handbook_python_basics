@@ -34,7 +34,7 @@ students = set(students_n) & set(students_m)
 if students:
     print(len(students))
 else:
-    print("Таких нет")
+    print('Таких нет')
 ```
 
 ### E. Кашееды — 2
@@ -53,7 +53,7 @@ for student in students:
 if students_single_cereal:
     print(len(students_single_cereal))
 else:
-    print("Таких нет")
+    print('Таких нет')
 ```
 
 ### F. Кашееды — 3
@@ -73,7 +73,7 @@ if students_single_cereal:
     for student in sorted(students_single_cereal):
         print(student)
 else:
-    print("Таких нет")
+    print('Таких нет')
 ```
 
 ### G. Азбука Морзе
@@ -97,7 +97,7 @@ MAP = {
 feed = input()
 
 for word in feed.split():
-    print(" ".join(MAP.get(_) for _ in word.upper()))
+    print(' '.join(MAP.get(_) for _ in word.upper()))
 ```
 
 ### H. Кашееды — 4
@@ -110,7 +110,7 @@ preferences, cereals = {}, set()
 
 
 for feed in feeds:
-    slice_by = feed.find(" ")
+    slice_by = feed.find(' ')
     preference = feed[slice_by:].split()
     preferences[feed[:slice_by]] = preference
     cereals |= set(preference)
@@ -121,7 +121,7 @@ if cereal in cereals:
         if cereal in preference:
             print(student)
 else:
-    print("Таких нет")
+    print('Таких нет')
 ```
 
 ### I. Зайка — 9
@@ -131,7 +131,7 @@ from collections import Counter
 
 counter = Counter()
 
-while (feed := input()) != "":
+while (feed := input()):
     counter.update(feed.split())
 
 for key, value in counter.items():
@@ -141,39 +141,39 @@ for key, value in counter.items():
 ### J. Транслитерация
 ```python
 MAP = {
-    "А": "A",
-    "Б": "B",
-    "В": "V",
-    "Г": "G",
-    "Д": "D",
-    "Е": "E",
-    "Ё": "E",
-    "Ж": "ZH",
-    "З": "Z",
-    "И": "I",
-    "Й": "I",
-    "К": "K",
-    "Л": "L",
-    "М": "M",
-    "Н": "N",
-    "О": "O",
-    "П": "P",
-    "Р": "R",
-    "С": "S",
-    "Т": "T",
-    "У": "U",
-    "Ф": "F",
-    "Х": "KH",
-    "Ц": "TC",
-    "Ч": "CH",
-    "Ш": "SH",
-    "Щ": "SHCH",
-    "Ъ": "",
-    "Ы": "Y",
-    "Ь": "",
-    "Э": "E",
-    "Ю": "IU",
-    "Я": "IA",
+    'А': 'A',
+    'Б': 'B',
+    'В': 'V',
+    'Г': 'G',
+    'Д': 'D',
+    'Е': 'E',
+    'Ё': 'E',
+    'Ж': 'ZH',
+    'З': 'Z',
+    'И': 'I',
+    'Й': 'I',
+    'К': 'K',
+    'Л': 'L',
+    'М': 'M',
+    'Н': 'N',
+    'О': 'O',
+    'П': 'P',
+    'Р': 'R',
+    'С': 'S',
+    'Т': 'T',
+    'У': 'U',
+    'Ф': 'F',
+    'Х': 'KH',
+    'Ц': 'TC',
+    'Ч': 'CH',
+    'Ш': 'SH',
+    'Щ': 'SHCH',
+    'Ъ': '',
+    'Ы': 'Y',
+    'Ь': '',
+    'Э': 'E',
+    'Ю': 'IU',
+    'Я': 'IA',
 }
 
 
@@ -185,7 +185,7 @@ def transliterate(letter: str, mapping: dict[str, str] = MAP) -> str:
     return letter
 
 
-print("".join(map(lambda _: transliterate(_), input())))
+print(''.join(map(lambda _: transliterate(_), input())))
 ```
 
 ### K. Однофамильцы
@@ -212,9 +212,9 @@ namesakes = dict(sorted(namesakes.items()))
 
 if namesakes:
     for name, occurences in namesakes.items():
-        print(f"{name} - {occurences}")
+        print(f'{name} - {occurences}')
 else:
-    print("Однофамильцев нет")
+    print('Однофамильцев нет')
 ```
 
 ### M. Дайте чего-нибудь новенького!
@@ -236,7 +236,7 @@ if meals_to_be_served:
     for meal in meals_to_be_served:
         print(meal)
 else:
-    print("Готовить нечего")
+    print('Готовить нечего')
 ```
 
 ### N. Это будет шедевр!
@@ -255,7 +255,7 @@ if meals_to_be_served:
     for meal in sorted(meals_to_be_served):
         print(meal)
 else:
-    print("Готовить нечего")
+    print('Готовить нечего')
 ```
 
 ### O. Двоичная статистика!
@@ -267,16 +267,16 @@ from collections import Counter
 def get_representation(number: int) -> str:
     bins = dict(Counter(bin(number)[2:]))
     return {
-        "digits": sum(bins.values()),
-        "units": bins.get('1', 0),
-        "zeros": bins.get('0', 0)
+        'digits': sum(bins.values()),
+        'units': bins.get('1', 0),
+        'zeros': bins.get('0', 0)
     }
 
 
 feed = input()
 
 
-with open("data.json", "w", encoding="UTF-8") as file_out:
+with open('data.json', 'w', encoding='utf-8') as file_out:
     json.dump(
         list(map(get_representation, map(int, feed.split()))),
         file_out,
@@ -284,18 +284,18 @@ with open("data.json", "w", encoding="UTF-8") as file_out:
         indent=4
     )
 
-with open("data.json", "r") as file:
+with open('data.json') as file:
     for line in file.readlines():
         print(line, end='')
 ```
 
 ### P. Зайка — 10
 ```python
-TARGET = """зайка"""
+TARGET = 'зайка'
 
 words_adjacent = []
 
-while (feed := input()) != "":
+while (feed := input()):
     words_in_line = feed.split()
 
     words_to_left, words_to_right = [], []
@@ -320,7 +320,7 @@ from itertools import chain
 
 friends_first = {}
 
-while (feed := input()) != "":
+while (feed := input()):
     name, friend = feed.split()
 
     if name in friends_first:
@@ -356,7 +356,7 @@ for name in container_raw:
 friends_second = dict(sorted(friends_second.items()))
 
 for name, friends in friends_second.items():
-    print(f"{name}: {', '.join(friends)}")
+    print(f'{name}: {", ".join(friends)}')
 ```
 
 ### R. Карта сокровищ
@@ -380,8 +380,8 @@ from itertools import chain
 common, container = set(), []
 
 for _ in range(int(input())):
-    _, toys = input().split(": ")
-    toys_set = set(toys.split(", "))
+    _, toys = input().split(': ')
+    toys_set = set(toys.split(', '))
     if common:
         common &= toys_set
     else:
@@ -408,7 +408,7 @@ def gcd(a: int, b: int) -> int:
     return a
 
 
-numbers = sorted(set(map(int, input().split("; "))))
+numbers = sorted(set(map(int, input().split('; '))))
 
 coprimes = {}
 
@@ -421,5 +421,5 @@ for one, another in permutations(numbers, 2):
 
 
 for number, these_coprimes in coprimes.items():
-    print(f"{number} - {', '.join(map(str, these_coprimes))}")
+    print(f'{number} - {", ".join(map(str, these_coprimes))}')
 ```

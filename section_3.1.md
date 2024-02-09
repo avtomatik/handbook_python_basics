@@ -13,7 +13,7 @@ def is_in_target(feed: list[str], target: str) -> bool:
 
 feed = [input() for _ in range(int(input()))]
 
-print("YES" if is_in_target(feed, TARGET) else "NO")
+print('YES' if is_in_target(feed, TARGET) else 'NO')
 ```
 
 ### B. Кручу-верчу
@@ -29,7 +29,7 @@ feed = [input() for _ in range(int(input()))]
 
 
 for line in feed:
-    print(line if len(line) <= length else f"{line[:length - 3]}...")
+    print(line if len(line) <= length else f'{line[:length - 3]}...')
 ```
 
 ### D. Очистка данных
@@ -42,7 +42,7 @@ def custom_trim(line: str) -> str | None:
     return line
 
 
-while (line := input()) != "":
+while (line := input()):
     result = custom_trim(line)
     if result:
         print(result)
@@ -94,7 +94,7 @@ for line in feed:
 
 ### I. Без комментариев
 ```python
-while (line := input()) != "":
+while (line := input()):
     try:
         if line.index('#'):
             print(line.split('#')[0].rstrip())
@@ -106,7 +106,7 @@ while (line := input()) != "":
 ```python
 counter = {}
 
-while (line := input()) != "ФИНИШ":
+while (line := input()) != 'ФИНИШ':
     letters = set(''.join(line.lower().split()))
     for letter in letters:
         if letter in counter:
@@ -195,7 +195,7 @@ for line in feed:
     if len(line) + SPARE < length:
         print(line)
     else:
-        print(f"{line[:(length - SPARE)]}...")
+        print(f'{line[:(length - SPARE)]}...')
         break
     length -= len(line)
 ```
@@ -232,14 +232,14 @@ else:
 ```python
 feed = input()
 
-OPERATIONS = "+-*"
+OPERATIONS = '+-*'
 
 stack = []
 
 for element in feed.split():
     if element in OPERATIONS:
         operand_r, operand_l = stack.pop(), stack.pop()
-        stack.append(eval(f"{operand_l} {element} {operand_r}"))
+        stack.append(eval(f'{operand_l} {element} {operand_r}'))
     else:
         stack.append(int(element))
 
@@ -251,9 +251,9 @@ print(stack.pop())
 import math
 
 
-OPERATIONS_UNR = "~!#"
-OPERATIONS_BIN = "+-*/"
-OPERATIONS_TER = "@"
+OPERATIONS_UNR = '~!#'
+OPERATIONS_BIN = '+-*/'
+OPERATIONS_TER = '@'
 
 
 stack = []
@@ -264,7 +264,7 @@ feeds = input()
 for feed in feeds.split():
     if feed in OPERATIONS_UNR:
         operand = stack.pop()
-        if feed == "~":
+        if feed == '~':
             stack.append(-operand)
         elif feed == '!':
             stack.append(math.factorial(operand))
@@ -274,7 +274,7 @@ for feed in feeds.split():
         if feed == '/':
             feed = '//'
         operand_r, operand_l = stack.pop(), stack.pop()
-        stack.append(eval(f"{operand_l} {feed} {operand_r}"))
+        stack.append(eval(f'{operand_l} {feed} {operand_r}'))
     elif feed in OPERATIONS_TER:
         operand_r, operand_m, operand_l = stack.pop(), stack.pop(), stack.pop()
         stack.extend([operand_m, operand_r, operand_l])

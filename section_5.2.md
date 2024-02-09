@@ -76,10 +76,10 @@ class PatchedPoint(Point):
             super().__init__(*args)
 
     def __str__(self):
-        return f"({self.x}, {self.y})"
+        return f'({self.x}, {self.y})'
 
     def __repr__(self):
-        return f"PatchedPoint{self.__str__()}"
+        return f'{self.__class__.__name__}{self.__str__()}'
 ```
 
 ### C. Классная точка 5.0
@@ -119,10 +119,10 @@ class PatchedPoint(Point):
             super().__init__(*args)
 
     def __str__(self):
-        return f"({self.x}, {self.y})"
+        return f'({self.x}, {self.y})'
 
     def __repr__(self):
-        return f"PatchedPoint{self.__str__()}"
+        return f'{self.__class__.__name__}{self.__str__()}'
 
     def __add__(self, other):
         x, y = other
@@ -155,7 +155,7 @@ class Fraction:
         return a
 
     def _parse_str(self, args: str):
-        return map(int, args.split("/"))
+        return map(int, args.split('/'))
 
     def numerator(self, number=None):
         if not number:
@@ -168,10 +168,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction({self.dividend}, {self.divisor})"
+        return f'{self.__class__.__name__}({self.dividend}, {self.divisor})'
 ```
 
 ### E. Дроби v0.2
@@ -196,7 +196,7 @@ class Fraction:
         return a
 
     def _parse(self, args: str):
-        return map(int, args.split("/"))
+        return map(int, args.split('/'))
 
     def numerator(self, number=None):
         if not number:
@@ -209,10 +209,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction('{str(self)}')"
+        return f'{self.__class__.__name__}('{str(self)}')'
 
     def __neg__(self):
         return Fraction(-self.dividend, self.divisor)
@@ -240,7 +240,7 @@ class Fraction:
         return a
 
     def _parse(self, args: str):
-        return map(int, args.split("/"))
+        return map(int, args.split('/'))
 
     def numerator(self, number=None):
         if not number:
@@ -253,10 +253,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction('{str(self)}')"
+        return f'{self.__class__.__name__}('{str(self)}')'
 
     def __neg__(self):
         return Fraction(-self.dividend, self.divisor)
@@ -310,7 +310,7 @@ class Fraction:
         return a
 
     def _parse(self, args: str):
-        return map(int, args.split("/"))
+        return map(int, args.split('/'))
 
     def numerator(self, number=None):
         if not number:
@@ -323,10 +323,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction('{str(self)}')"
+        return f'{self.__class__.__name__}('{str(self)}')'
 
     def __neg__(self):
         return Fraction(-self.dividend, self.divisor)
@@ -402,7 +402,7 @@ class Fraction:
         return a
 
     def _parse(self, args: str):
-        return map(int, args.split("/"))
+        return map(int, args.split('/'))
 
     def numerator(self, number=None):
         if not number:
@@ -415,10 +415,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction('{str(self)}')"
+        return f'{self.__class__.__name__}('{str(self)}')'
 
     def __neg__(self):
         return Fraction(-self.dividend, self.divisor)
@@ -497,7 +497,7 @@ class Fraction:
     def __init__(self, *args):
         if len(args) < 2:
 
-            SEP = "/"
+            SEP = '/'
 
             args, *rest = args
 
@@ -523,7 +523,7 @@ class Fraction:
         return a
 
     def _parse(self, args: str):
-        SEP = "/"
+        SEP = '/'
         return map(int, args.split(SEP))
 
     def numerator(self, number=None):
@@ -537,10 +537,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction('{str(self)}')"
+        return f'{self.__class__.__name__}('{str(self)}')'
 
     def __neg__(self):
         return Fraction(-self.dividend, self.divisor)
@@ -644,7 +644,7 @@ class Fraction:
 
     def _parse(self, *args) -> tuple[int]:
 
-        SEP = "/"
+        SEP = '/'
 
         if len(args) == 1:
             dividend_or_frac_str, *_ = args
@@ -681,10 +681,10 @@ class Fraction:
         self.__init__(self.dividend, number)
 
     def __str__(self):
-        return f"{self.dividend}/{self.divisor}"
+        return f'{self.dividend}/{self.divisor}'
 
     def __repr__(self):
-        return f"Fraction('{str(self)}')"
+        return f'{self.__class__.__name__}('{str(self)}')'
 
     def __neg__(self):
         return Fraction(-self.dividend, self.divisor)

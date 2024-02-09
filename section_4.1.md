@@ -5,7 +5,7 @@
 ### A. Функциональное приветствие
 ```python
 def print_hello(string: str) -> None:
-    print(f"Hello, {string}!")
+    print(f'Hello, {string}!')
 ```
 
 ### B. Функциональный НОД
@@ -30,7 +30,7 @@ def number_length(number: int) -> int:
 ```python
 def month(number: int, language: str) -> str:
     MONTHS = {
-        "ru": [
+        'ru': [
             'январь',
             'февраль',
             'март',
@@ -44,7 +44,7 @@ def month(number: int, language: str) -> str:
             'ноябрь',
             'декабрь'
         ],
-        "en": [
+        'en': [
             'january',
             'february',
             'march',

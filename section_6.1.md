@@ -70,7 +70,7 @@ def make_board(number: int) -> np.ndarray:
             [(col + row - 1) % 2 for col in range(1, 1 + number)]
             for row in range(1, 1 + number)
         ],
-        dtype="int8"
+        dtype='int8'
     )
 ```
 
@@ -79,26 +79,26 @@ def make_board(number: int) -> np.ndarray:
 import numpy as np
 
 
-def snake(cols: int, rows: int, direction: str = "H") -> np.ndarray:
+def snake(cols: int, rows: int, direction: str = 'H') -> np.ndarray:
     # =========================================================================
     # TODO: Refactor with DRY
     # =========================================================================
-    if direction == "H":
+    if direction == 'H':
         return np.array(
             [
                 [get_elem(col, cols, row) for col in range(cols)]
                 for row in range(rows)
             ],
-            dtype="int16"
+            dtype='int16'
         )
 
-    if direction == "V":
+    if direction == 'V':
         return np.array(
             [
                 [get_elem(row, rows, col) for col in range(cols)]
                 for row in range(rows)
             ],
-            dtype="int16"
+            dtype='int16'
         )
 
 
