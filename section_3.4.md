@@ -39,11 +39,12 @@ for subsentence in accumulate(feed.split('?')):
 from itertools import chain
 
 
-items = chain.from_iterable(
-    _.split(', ') for _ in [input() for _ in range(3)]
-)
-
-for _, item in enumerate(sorted(items), 1):
+for _, item in enumerate(
+    sorted(
+        chain.from_iterable([input().split(', ') for _ in range(3)])
+    ),
+    start=1
+):
     print(f'{_}. {item}')
 ```
 
@@ -177,11 +178,12 @@ for batch in batched(range(1, 1 + rows * cols), cols):
 from itertools import chain
 
 
-items = chain.from_iterable(
-    _.split(', ') for _ in [input() for _ in range(int(input()))]
-)
-
-for _, item in enumerate(sorted(items), 1):
+for _, item in enumerate(
+    sorted(
+        chain.from_iterable([input().split(', ') for _ in range(int(input()))])
+    ),
+    start=1
+):
     print(f'{_}. {item}')
 ```
 
