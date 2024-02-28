@@ -110,8 +110,8 @@ def get_long(series: pd.Series, min_length: int = 5) -> pd.Series:
 import pandas as pd
 
 
-def best(df: pd.DataFrame, treshold: int = 3) -> pd.DataFrame:
-    return df[(df.iloc[:, 1:] > treshold).all(axis=1)]
+def best(df: pd.DataFrame, threshold: int = 3) -> pd.DataFrame:
+    return df[(df.iloc[:, 1:] > threshold).all(axis=1)]
 ```
 
 ### G. Отчёт неуспеваемости

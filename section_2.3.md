@@ -35,14 +35,14 @@ print(' '.join(map(str, range(start, stop, step))))
 
 ### E. Внимание! Акция!
 ```python
-TRESHOLD = 500
+THRESHOLD = 500
 DISCOUNT = .1
 
 feeds = []
-while (feed := float(input())) != .0:
+while (feed := float(input())):
     feeds.append(feed)
 
-print(sum(map(lambda _: (1 - DISCOUNT) * _ if _ >= TRESHOLD else _, feeds)))
+print(sum(map(lambda _: (1 - DISCOUNT) * _ if _ >= THRESHOLD else _, feeds)))
 ```
 
 ### F. НОД

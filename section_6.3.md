@@ -21,7 +21,7 @@ SCHEME = 'http'
 
 entries, feed = [], input()
 
-while (entry := int(get(f'{SCHEME}://{feed}').text)) != 0:
+while (entry := int(get(f'{SCHEME}://{feed}').text)):
     entries.append(entry)
 
 print(sum(entries))
