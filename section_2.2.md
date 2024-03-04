@@ -88,7 +88,7 @@ print(f'{max((sum_low, sum_fore))}{min((sum_low, sum_fore))}')
 ```python
 numbers = sorted(list(map(int, input())))
 min_val = numbers.pop(0)
-max_val = numbers.pop(-1)
+max_val = numbers.pop()
 mid_val = numbers.pop()
 
 print('YES' if 2 * mid_val == min_val + max_val else 'NO')
@@ -209,7 +209,7 @@ print(find_roots(float(input()), float(input()), float(input())))
 def spell_out(edges: tuple[int]) -> str:
     edges = sorted(edges)
 
-    largest = edges.pop(-1)
+    largest = edges.pop()
 
     cos = sum(map(lambda _: _ ** 2, edges)) - largest ** 2
 
