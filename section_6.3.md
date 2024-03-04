@@ -58,7 +58,7 @@ from requests import get
 
 SCHEME = 'http'
 
-feed = list(map(lambda _: _.rstrip('\n'), stdin))
+feed = list(map(lambda _: _.rstrip(), stdin))
 
 host_and_port = feed.pop(0)
 
@@ -133,7 +133,7 @@ url = f'{SCHEME}://{input()}/users/{input()}'
 patch = {}
 
 for line in stdin:
-    key, value = line.rstrip('\n').split(SEP)
+    key, value = line.rstrip().split(SEP)
     patch[key] = value
 
 

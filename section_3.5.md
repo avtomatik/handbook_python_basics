@@ -33,9 +33,9 @@ from sys import stdin
 for line in stdin:
     try:
         if line.index('#'):
-            print(line.split('#')[0].rstrip('\n'))
+            print(line.split('#')[0].rstrip())
     except ValueError:
-        print(line.rstrip('\n'))
+        print(line.rstrip())
 ```
 
 ### D. Найдётся всё 2.0
@@ -43,7 +43,7 @@ for line in stdin:
 from sys import stdin
 
 
-headers = list(map(lambda _: _.rstrip('\n'), stdin))
+headers = list(map(lambda _: _.rstrip(), stdin))
 
 qwery = headers.pop()
 
@@ -66,7 +66,7 @@ def is_palindrome(feed: str) -> bool:
 
 palindromes = sorted(
     set(
-        word for line in stdin for word in line.rstrip('\n').split() if is_palindrome(word)
+        word for line in stdin for word in line.rstrip().split() if is_palindrome(word)
 
     )
 )
@@ -139,8 +139,8 @@ def get_numbers(file_name: str) -> list[int]:
 
     with open(file_name) as file:
         for _ in file.readlines():
-            numbers.extend(map(int, _.rstrip('\n').split()))
-    return numbers
+            numbers.extend(map(int, _.rstrip().split()))
+        return numbers
 
 
 def main():
@@ -173,7 +173,7 @@ for file_name in file_names:
 
     with open(file_name) as file:
         for _ in file.readlines():
-            words.extend(_.rstrip('\n').split())
+            words.extend(_.rstrip().split())
 
     words_by_files[file_name] = words
 
@@ -197,7 +197,7 @@ file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
 with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
     with open(file_name_src, encoding='utf-8') as file_src:
         for line in file_src.readlines():
-            line_clean = line.rstrip('\n')
+            line_clean = line.rstrip()
             if line_clean:
                 if '\t' in line_clean:
                     print(
@@ -219,7 +219,7 @@ with open(file_name, 'rb') as file:
 with open(file_name, encoding='utf-8') as file:
     for _, line in enumerate(file.readlines(), 1):
         if _ > number_lines - number_tail:
-            print(line.rstrip('\n'))
+            print(line.rstrip())
 ```
 
 ### K. Файловая статистика 2.0
@@ -232,8 +232,8 @@ def get_numbers(file_name: str) -> list[int]:
 
     with open(file_name) as file:
         for _ in file.readlines():
-            numbers.extend(map(int, _.rstrip('\n').split()))
-    return numbers
+            numbers.extend(map(int, _.rstrip().split()))
+        return numbers
 
 
 def get_number_struct(numbers: list[int]) -> tuple[int, float]:
@@ -307,8 +307,7 @@ for file_name, parity in zip(file_names, Parity):
             lines = [
                 list(
                     filter(
-                        lambda _: classify(_) == parity,
-                        line.rstrip('\n').split()
+                        lambda _: classify(_) == parity, line.rstrip().split()
                     )
                 )
                 for line in file_src.readlines()
@@ -333,7 +332,7 @@ with open(file_name, encoding='utf-8') as file:
 
 with open(file_name, 'w', encoding='utf-8') as file:
     json.dump(
-        data | dict(map(lambda _: _.rstrip('\n').split(' == '), stdin)),
+        data | dict(map(lambda _: _.rstrip().split(' == '), stdin)),
         file,
         ensure_ascii=False,
         indent=4
@@ -357,14 +356,14 @@ with open(input(), encoding='utf-8') as file:
 
 
 for name, attributes in data_upd.items():
-    if name not in data:
-        data[name] = attributes
-    else:
+    if name in data:
         for key, value in data_upd[name].items():
-            if key not in data[name]:
-                data[name][key] = value
-            else:
+            if key in data[name]:
                 data[name][key] = max(data[name][key], value)
+            else:
+                data[name][key] = value
+    else:
+        data[name] = attributes
 
 
 with open(file_name, 'w', encoding='utf-8') as file:
@@ -395,7 +394,7 @@ with open(FILE_NAME, encoding='utf-8') as file:
 tests_success = list(
     filter(
         lambda _: _[0] == _[-1][0],
-        zip(map(lambda _: _.rstrip('\n'), stdin.readlines()), scores_by_patterns)
+        zip(map(lambda _: _.rstrip(), stdin.readlines()), scores_by_patterns)
     )
 )
 
@@ -407,7 +406,7 @@ print(sum(map(lambda _: _[-1][-1], tests_success)))
 from sys import stdin
 
 
-feed = list(map(lambda _: _.rstrip('\n'), stdin))
+feed = list(map(lambda _: _.rstrip(), stdin))
 
 qwery = feed.pop(0)
 

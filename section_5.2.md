@@ -651,10 +651,10 @@ class Fraction:
             if isinstance(dividend_or_frac_str, int):
                 return dividend_or_frac_str, 1
             if isinstance(dividend_or_frac_str, str):
-                if SEP not in dividend_or_frac_str:
-                    return int(dividend_or_frac_str), 1
-                else:
+                if SEP in dividend_or_frac_str:
                     return tuple(map(int, dividend_or_frac_str.split(SEP)))
+                else:
+                    return int(dividend_or_frac_str), 1
         elif len(args) == 2:
             return args
         else:
