@@ -83,11 +83,10 @@ def cheque(price_list: pd.Series, **kwargs: dict[str, int]) -> pd.DataFrame:
     return df.sort_index().rename_axis('product').reset_index()
 
 
-def discount_cost(df):
-    if df['number'] > 2:
-        return df['cost'] * .5
-    else:
-        return df['cost']
+def discount_cost(row: pd.Series) -> float:
+    if row['number'] > 2:
+        return row['cost'] * .5
+    return row['cost']
 
 
 def discount(df: pd.DataFrame) -> pd.DataFrame:
