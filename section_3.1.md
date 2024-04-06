@@ -230,18 +230,16 @@ else:
 
 ### S. Польский калькулятор
 ```python
-feed = input()
-
 OPERATIONS = '+-*'
 
 stack = []
 
-for element in feed.split():
-    if element in OPERATIONS:
+for token in input().split():
+    if token in OPERATIONS:
         operand_r, operand_l = stack.pop(), stack.pop()
-        stack.append(eval(f'{operand_l} {element} {operand_r}'))
+        stack.append(eval(f'{operand_l} {token} {operand_r}'))
     else:
-        stack.append(int(element))
+        stack.append(int(token))
 
 print(stack.pop())
 ```
@@ -258,28 +256,26 @@ OPERATIONS_TER = '@'
 
 stack = []
 
-feeds = input()
 
-
-for feed in feeds.split():
-    if feed in OPERATIONS_UNR:
+for token in input().split():
+    if token in OPERATIONS_UNR:
         operand = stack.pop()
-        if feed == '~':
+        if token == '~':
             stack.append(-operand)
-        elif feed == '!':
+        elif token == '!':
             stack.append(math.factorial(operand))
-        elif feed == '#':
+        elif token == '#':
             stack.extend([operand, operand])
-    elif feed in OPERATIONS_BIN:
-        if feed == '/':
-            feed = '//'
+    elif token in OPERATIONS_BIN:
+        if token == '/':
+            token = '//'
         operand_r, operand_l = stack.pop(), stack.pop()
-        stack.append(eval(f'{operand_l} {feed} {operand_r}'))
-    elif feed in OPERATIONS_TER:
+        stack.append(eval(f'{operand_l} {token} {operand_r}'))
+    elif token in OPERATIONS_TER:
         operand_r, operand_m, operand_l = stack.pop(), stack.pop(), stack.pop()
         stack.extend([operand_m, operand_r, operand_l])
     else:
-        stack.append(int(feed))
+        stack.append(int(token))
 
 print(stack.pop())
 ```

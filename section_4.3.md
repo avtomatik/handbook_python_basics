@@ -58,20 +58,24 @@ def result_accumulator(func, method='accumulate'):
 
 ### F. Сортировка слиянием
 ```python
-def merge(left: list[int], right: list[int]) -> list[int]:
+def merge(left: tuple[int], right: tuple[int]) -> tuple[int]:
 
     combined = []
 
-    while left and right:
-        if left[0] < right[0]:
-            combined.append(left.pop(0))
-        else:
-            combined.append(right.pop(0))
+    left_ix, right_ix = 0, 0
 
-    if left:
-        combined.extend(left)
-    else:
-        combined.extend(right)
+    left_sz, right_sz = len(left), len(right)
+
+    while left_ix < left_sz and right_ix < right_sz:
+        if left[left_ix] <= right[right_ix]:
+            combined.append(left[left_ix])
+            left_ix += 1
+        else:
+            combined.append(right[right_ix])
+            right_ix += 1
+
+    combined.extend(left[left_ix:])
+    combined.extend(right[right_ix:])
 
     return combined
 

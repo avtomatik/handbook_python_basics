@@ -113,18 +113,22 @@ def is_prime(number: int) -> bool:
 ```python
 def merge(left: tuple[int], right: tuple[int]) -> tuple[int]:
 
-    left, right, combined = list(left), list(right), list()
+    combined = []
 
-    while left and right:
-        if min(left) < min(right):
-            combined.append(left.pop(0))
+    left_ix, right_ix = 0, 0
+
+    left_sz, right_sz = len(left), len(right)
+
+    while left_ix < left_sz and right_ix < right_sz:
+        if left[left_ix] <= right[right_ix]:
+            combined.append(left[left_ix])
+            left_ix += 1
         else:
-            combined.append(right.pop(0))
+            combined.append(right[right_ix])
+            right_ix += 1
 
-    if left:
-        combined.extend(left)
-    else:
-        combined.extend(right)
+    combined.extend(left[left_ix:])
+    combined.extend(right[right_ix:])
 
     return tuple(combined)
 ```
