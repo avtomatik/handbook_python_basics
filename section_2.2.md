@@ -96,9 +96,9 @@ print('YES' if 2 * mid_val == min_val + max_val else 'NO')
 
 ### L. Музыкальный инструмент
 ```python
-a, b, c = int(input()), int(input()), int(input())
+edges = list(map(int, (input(), input(), input())))
 
-print('YES' if 2 * max((a, b, c)) < sum((a, b, c)) else 'NO')
+print('YES' if 2 * max(edges) < sum(edges) else 'NO')
 ```
 
 ### M. Властелин Чисел: Братство общей цифры

@@ -83,7 +83,7 @@ from operator import sub
 
 
 def can_eat(start: tuple[int], final: tuple[int]) -> bool:
-    return sum(map(lambda _: _ ** 2, map(sub, final, start))) == 5
+    return sum(map(abs, map(sub, final, start))) == 3
 ```
 
 ### H. А роза упала на лапу Азора 7.0

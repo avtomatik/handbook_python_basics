@@ -14,11 +14,10 @@ print(''.join(set(input()) & set(input())))
 
 ### C. Зайка — 8
 ```python
-feed = [input() for _ in range(int(input()))]
-
 entities = []
-for line in feed:
-    entities.extend(line.split())
+
+for _ in range(int(input())):
+    entities.extend(input().split())
 
 for entity in set(entities):
     print(entity)

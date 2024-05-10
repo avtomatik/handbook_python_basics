@@ -230,12 +230,12 @@ else:
 
 ### S. Польский калькулятор
 ```python
-OPERATIONS = '+-*'
+OPERATIONS_BIN = '+-*'
 
 stack = []
 
 for token in input().split():
-    if token in OPERATIONS:
+    if token in OPERATIONS_BIN:
         operand_r, operand_l = stack.pop(), stack.pop()
         stack.append(eval(f'{operand_l} {token} {operand_r}'))
     else:
