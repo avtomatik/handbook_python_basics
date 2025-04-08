@@ -122,10 +122,12 @@ def transliterate(letter: str, mapping: dict[str, str] = MAP) -> str:
     return letter
 
 
-with open('transliteration.txt', 'w', encoding='utf-8') as file_exp:
-    with open('cyrillic.txt', encoding='utf-8') as file_src:
-        for line in file_src:
-            file_exp.write(
+f_name_src, f_name_dst = 'cyrillic.txt', 'transliteration.txt'
+
+with open(f_name_src, encoding='utf-8') as f_src:
+    with open(f_name_dst, 'w', encoding='utf-8') as f_dst:
+        for line in f_src:
+            f_dst.write(
                 ''.join(
                     map(lambda _: transliterate(_), line)
                 )
@@ -164,7 +166,7 @@ NUMBER = 3
 
 file_names = [input() for _ in range(NUMBER)]
 
-file_name_exp = file_names.pop()
+file_name_dst = file_names.pop()
 
 words_by_files = {}
 
@@ -177,7 +179,7 @@ for file_name in file_names:
 
     words_by_files[file_name] = words
 
-with open(file_name_exp, 'w') as file:
+with open(file_name_dst, 'w') as file:
     for word in sorted(
         set(
             words_by_files[file_names[0]]
@@ -192,20 +194,17 @@ with open(file_name_exp, 'w') as file:
 ```python
 NUMBER = 2
 
-file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
+f_name_src, f_name_dst = [input() for _ in range(NUMBER)]
 
-with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
-    with open(file_name_src, encoding='utf-8') as file_src:
-        for line in file_src:
+with open(f_name_src, encoding='utf-8') as f_src:
+    with open(f_name_dst, 'w', encoding='utf-8') as f_dst:
+        for line in f_src:
             line_clean = line.rstrip()
             if line_clean:
-                if '\t' in line_clean:
-                    print(
-                        ' '.join(line_clean.replace('\t', '').split()),
-                        file=file_exp
-                    )
-                else:
-                    print(' '.join(line_clean.split()), file=file_exp)
+                print(
+                    ' '.join(line_clean.replace('\t', '').split()),
+                    file=f_dst
+                )
 ```
 
 ### J. Хвост
@@ -252,17 +251,17 @@ def main():
 
     HEADERS = 'count positive_count min max sum average'
 
-    file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
+    f_name_src, f_name_dst = [input() for _ in range(NUMBER)]
 
-    with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
+    with open(f_name_dst, 'w', encoding='utf-8') as file:
         json.dump(
             dict(
                 zip(
                     HEADERS.split(),
-                    get_number_struct(get_numbers(file_name_src))
+                    get_number_struct(get_numbers(f_name_src))
                 )
             ),
-            file_exp,
+            file,
             ensure_ascii=False,
             indent=4
         )
@@ -302,8 +301,8 @@ file_names = [input() for _ in range(NUMBER)]
 file_name_src = file_names.pop(0)
 
 for file_name, parity in zip(file_names, Parity):
-    with open(file_name, 'w', encoding='utf-8') as file:
-        with open(file_name_src, encoding='utf-8') as file_src:
+    with open(file_name_src, encoding='utf-8') as file_src:
+        with open(file_name, 'w', encoding='utf-8') as file:
             lines = [
                 list(
                     filter(
@@ -476,14 +475,14 @@ def do_caesar_shift(symbol: str, shift: int) -> str:
     return symbol
 
 
-file_name_src, file_name_exp = 'public.txt', 'private.txt'
+f_name_src, f_name_dst = 'public.txt', 'private.txt'
 shift = int(input())
 
-with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
-    with open(file_name_src, encoding='utf-8') as file_src:
+with open(f_name_src, encoding='utf-8') as f_src:
+    with open(f_name_dst, 'w', encoding='utf-8') as f_dst:
         print(
-            ''.join(do_caesar_shift(_, shift) for _ in file_src.read()),
-            file=file_exp
+            ''.join(do_caesar_shift(_, shift) for _ in f_src.read()),
+            file=f_dst
         )
 ```
 

@@ -275,10 +275,10 @@ def get_representation(number: int) -> str:
 feed = input()
 
 
-with open('data.json', 'w', encoding='utf-8') as file_out:
+with open('data.json', 'w', encoding='utf-8') as file:
     json.dump(
         list(map(get_representation, map(int, feed.split()))),
-        file_out,
+        file,
         ensure_ascii=False,
         indent=4
     )
