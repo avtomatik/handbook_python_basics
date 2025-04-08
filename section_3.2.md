@@ -109,14 +109,13 @@ preferences, cereals = {}, set()
 
 
 for feed in feeds:
-    slice_by = feed.find(' ')
-    preference = feed[slice_by:].split()
-    preferences[feed[:slice_by]] = preference
-    cereals |= set(preference)
+    student, *preference = feed.split()
+    preferences[student] = preference
+    cereals.update(preference)
 
 
 if cereal in cereals:
-    for student, preference in dict(sorted(preferences.items())).items():
+    for student, preference in sorted(preferences.items()):
         if cereal in preference:
             print(student)
 else:
@@ -125,13 +124,11 @@ else:
 
 ### I. Зайка — 9
 ```python
-from collections import Counter
-
-
-counter = Counter()
+counter = {}
 
 while (feed := input()):
-    counter.update(feed.split())
+    for word in feed.split():
+        counter[word] = counter.get(word, 0) + 1
 
 for key, value in counter.items():
     print(key, value)

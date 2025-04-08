@@ -189,10 +189,10 @@ feed = [input() for _ in range(int(input()))]
 for line in feed:
     if len(line) + SPARE < length:
         print(line)
+        length -= len(line)
     else:
-        print(f'{line[:(length - SPARE)]}...')
+        print(f"{line[:(length - SPARE)]}...")
         break
-    length -= len(line)
 ```
 
 ### Q. А роза упала на лапу Азора 5.0

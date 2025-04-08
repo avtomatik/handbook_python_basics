@@ -114,13 +114,15 @@ import numpy as np
 
 
 def rotate(array: np.ndarray, angle: int) -> np.ndarray:
-    if angle % 360 == 0:
+    angle = angle % 360
+
+    if angle == 0:
         return array
-    if angle % 360 == 90:
+    if angle == 90:
         return np.flip(array.transpose(), 1)
-    if angle % 360 == 180:
+    if angle == 180:
         return np.flip(array)
-    if angle % 360 == 270:
+    if angle == 270:
         return np.flip(array, 1).transpose()
 ```
 

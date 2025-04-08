@@ -171,22 +171,18 @@ file_name_dst = file_names.pop()
 words_by_files = {}
 
 for file_name in file_names:
-    words = []
-
     with open(file_name) as file:
-        for _ in file:
-            words.extend(_.rstrip().split())
+        words_by_files[file_name] = set(
+            word for line in file for word in line.rstrip().split()
+        )
 
-    words_by_files[file_name] = words
+
+words_unique = sorted(
+    words_by_files[file_names[0]] ^ words_by_files[file_names[-1]]
+)
 
 with open(file_name_dst, 'w') as file:
-    for word in sorted(
-        set(
-            words_by_files[file_names[0]]
-        ) ^ set(
-            words_by_files[file_names[-1]]
-        )
-    ):
+    for word in words_unique:
         print(word, file=file)
 ```
 

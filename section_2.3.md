@@ -254,8 +254,7 @@ def validate(numbers: list[int]) -> int:
         if not is_valid_hash(control):
             return _
 
-    else:
-        return -1
+    return -1
 
 
 if __name__ == '__main__':
