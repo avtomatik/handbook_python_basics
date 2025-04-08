@@ -284,7 +284,7 @@ with open('data.json', 'w', encoding='utf-8') as file_out:
     )
 
 with open('data.json') as file:
-    for line in file.readlines():
+    for line in file:
         print(line, end='')
 ```
 

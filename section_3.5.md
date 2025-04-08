@@ -124,7 +124,7 @@ def transliterate(letter: str, mapping: dict[str, str] = MAP) -> str:
 
 with open('transliteration.txt', 'w', encoding='utf-8') as file_exp:
     with open('cyrillic.txt', encoding='utf-8') as file_src:
-        for line in file_src.readlines():
+        for line in file_src:
             file_exp.write(
                 ''.join(
                     map(lambda _: transliterate(_), line)
@@ -138,7 +138,7 @@ def get_numbers(file_name: str) -> list[int]:
     numbers = []
 
     with open(file_name) as file:
-        for _ in file.readlines():
+        for _ in file:
             numbers.extend(map(int, _.rstrip().split()))
         return numbers
 
@@ -172,7 +172,7 @@ for file_name in file_names:
     words = []
 
     with open(file_name) as file:
-        for _ in file.readlines():
+        for _ in file:
             words.extend(_.rstrip().split())
 
     words_by_files[file_name] = words
@@ -196,7 +196,7 @@ file_name_src, file_name_exp = [input() for _ in range(NUMBER)]
 
 with open(file_name_exp, 'w', encoding='utf-8') as file_exp:
     with open(file_name_src, encoding='utf-8') as file_src:
-        for line in file_src.readlines():
+        for line in file_src:
             line_clean = line.rstrip()
             if line_clean:
                 if '\t' in line_clean:
@@ -217,7 +217,7 @@ with open(file_name, 'rb') as file:
     number_lines = sum(map(bool, file))
 
 with open(file_name, encoding='utf-8') as file:
-    for _, line in enumerate(file.readlines(), 1):
+    for _, line in enumerate(file, 1):
         if _ > number_lines - number_tail:
             print(line.rstrip())
 ```
@@ -231,7 +231,7 @@ def get_numbers(file_name: str) -> list[int]:
     numbers = []
 
     with open(file_name) as file:
-        for _ in file.readlines():
+        for _ in file:
             numbers.extend(map(int, _.rstrip().split()))
         return numbers
 
@@ -310,7 +310,7 @@ for file_name, parity in zip(file_names, Parity):
                         lambda _: classify(_) == parity, line.rstrip().split()
                     )
                 )
-                for line in file_src.readlines()
+                for line in file_src
             ]
 
         for line in lines:
@@ -394,7 +394,7 @@ with open(FILE_NAME, encoding='utf-8') as file:
 tests_success = list(
     filter(
         lambda _: _[0] == _[-1][0],
-        zip(map(lambda _: _.rstrip(), stdin.readlines()), scores_by_patterns)
+        zip(map(lambda _: _.rstrip(), stdin), scores_by_patterns)
     )
 )
 
