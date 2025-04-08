@@ -107,14 +107,9 @@ while (line := input()):
 counter = {}
 
 while (line := input()) != 'ФИНИШ':
-    letters = set(''.join(line.lower().split()))
-    for letter in letters:
-        if letter in counter:
-            counter[letter] += line.lower().count(letter)
-        else:
-            counter[letter] = line.lower().count(letter)
+    for letter in line.lower().replace(' ', ''):
+        counter[letter] = counter.get(letter, 0) + 1
 
-counter = dict(sorted(counter.items()))
 print(max(counter, key=counter.get))
 ```
 
@@ -216,16 +211,16 @@ print('YES' if is_palindrome(feed) else 'NO')
 ```python
 feed = input()
 
-current, count = feed[0], 0
+current, count = feed[0], 1
 
-for symbol in feed:
-    if symbol != current:
+for symbol in feed[1:]:
+    if symbol == current:
+        count += 1
+    else:
         print(current, count)
         current, count = symbol, 1
-    else:
-        count += 1
-else:
-    print(current, count)
+
+print(current, count)
 ```
 
 ### S. Польский калькулятор
