@@ -332,10 +332,27 @@ for values in product([0, 1], repeat=len(tuple(variables))):
 
 ### T. Таблицы истинности 3
 ```python
-# =============================================================================
-# TODO: Extract Constants
-# =============================================================================
 from itertools import product
+
+OPERATIONS_UNR = {'not': 7}
+
+OPERATIONS_BIN = {
+    'and': 6,  # Conjunction
+    'or': 5,   # Disjunction
+    '^': 4,    # Exclusive Disjunction
+    '->': 3,   # Implication
+    '~': 2     # Equality
+}
+
+IS_LEFT_ASSOCIATIVE = {
+    'not': False, 'and': True, 'or': True, '^': True, '->': True, '~': True
+}
+
+OPERATIONS = OPERATIONS_UNR | OPERATIONS_BIN
+
+OPERATIONS_EXT = [*OPERATIONS_UNR, *OPERATIONS_BIN, '(', ')']
+
+RANGE = [0, 1]
 
 
 def parse(expression: str) -> str:
@@ -351,40 +368,6 @@ def parse(expression: str) -> str:
     str.
 
     """
-
-    OPERATIONS_UNR = {'not': 7}
-
-    OPERATIONS_BIN = {
-        # =====================================================================
-        # Conjunction
-        # =====================================================================
-        'and': 6,
-        # =====================================================================
-        # Disjunction
-        # =====================================================================
-        'or': 5,
-        # =====================================================================
-        # Exclusive Disjunction
-        # =====================================================================
-        '^': 4,
-        # =====================================================================
-        # Implication
-        # =====================================================================
-        '->': 3,
-        # =====================================================================
-        # Equality
-        # =====================================================================
-        '~': 2
-    }
-
-    IS_LEFT_ASSOCIATIVE = {
-        'not': False, 'and': True, 'or': True, '^': True, '->': True, '~': True
-    }
-
-    OPERATIONS = OPERATIONS_UNR | OPERATIONS_BIN
-
-    OPERATIONS_EXT = [*OPERATIONS_UNR, *OPERATIONS_BIN, *'( )'.split()]
-
     output_queue, operator_stack = [], []
 
     for token in expression.split():
@@ -413,32 +396,6 @@ def parse(expression: str) -> str:
 
 
 def evaluate(expression: str, scope: dict) -> int:
-
-    OPERATIONS_UNR = {'not': 7}
-
-    OPERATIONS_BIN = {
-        # =====================================================================
-        # Conjunction
-        # =====================================================================
-        'and': 6,
-        # =====================================================================
-        # Disjunction
-        # =====================================================================
-        'or': 5,
-        # =====================================================================
-        # Exclusive Disjunction
-        # =====================================================================
-        '^': 4,
-        # =====================================================================
-        # Implication
-        # =====================================================================
-        '->': 3,
-        # =====================================================================
-        # Equality
-        # =====================================================================
-        '~': 2
-    }
-
     output_queue = []
 
     for token in expression.split():
@@ -476,8 +433,6 @@ def evaluate(expression: str, scope: dict) -> int:
 
 
 def main():
-    RANGE = [0, 1]
-
     expression = input().replace('(', '( ').replace(')', ' )')
 
     variables = tuple(filter(str.isupper, sorted(set(expression))))
