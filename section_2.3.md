@@ -130,16 +130,18 @@ print(min(input() for _ in range(int(input()))))
 
 ### N. Простая задача
 ```python
-import math
-
-
-def is_prime(number: int) -> bool:
-    if number <= 1:
+def is_prime(n: int) -> bool:
+    if n <= 1:
         return False
-
-    for _ in range(2, 1 + int(math.sqrt(number))):
-        if number % _ == 0:
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
             return False
+        i += 6
     return True
 
 
@@ -167,46 +169,27 @@ print(''.join(filter(lambda _: _ not in map(str, range(0, 10, 2)), input())))
 
 ### R. Простая задача 2.0
 ```python
-import math
+def prime_factors(n: int):
+    factors = []
+
+    while n % 2 == 0:
+        factors.append(2)
+        n //= 2
+
+    i = 3
+    while i * i <= n:
+        while n % i == 0:
+            factors.append(i)
+            n //= i
+        i += 2
+
+    if n > 2:
+        factors.append(n)
+
+    return factors
 
 
-def is_prime(number: int) -> bool:
-    if number <= 1:
-        return False
-
-    for _ in range(2, 1 + int(math.sqrt(number))):
-        if number % _ == 0:
-            return False
-    return True
-
-
-def get_primes(number: int):
-    return filter(
-        lambda _: is_prime(_),
-        range(2, 1 + number)
-    )
-
-
-feed = int(input())
-
-
-divisors = []
-remainder = feed
-
-for prime in get_primes(feed):
-    if remainder % prime == 0:
-        remainder /= prime
-        divisors.append(prime)
-
-
-factors = []
-remainder = feed
-
-for divisor in divisors:
-    while remainder % divisor == 0:
-        remainder /= divisor
-        factors.append(divisor)
-
+factors = prime_factors(int(input()))
 print(' * '.join(map(str, factors)))
 ```
 

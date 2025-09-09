@@ -126,9 +126,6 @@ for header in headers:
 
 ### L. Меню питания
 ```python
-from itertools import cycle
-
-
 PORRIDGES = [
     'Манная',
     'Гречневая',
@@ -137,15 +134,10 @@ PORRIDGES = [
     'Рисовая',
 ]
 
-
 number = int(input())
 
-for _, porridge in enumerate(cycle(PORRIDGES)):
-    if _ < number:
-        print(porridge)
-        continue
-    else:
-        break
+for i in range(number):
+    print(PORRIDGES[i % len(PORRIDGES)])
 ```
 
 ### M. Массовое возведение в степень

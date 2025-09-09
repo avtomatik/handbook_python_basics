@@ -330,29 +330,16 @@ while (feed := input()):
         friends_first[friend] = [name]
 
 
-container_raw = {}
-
-for name, friends in friends_first.items():
-    for friend in friends:
-        if name in container_raw:
-            container_raw[name] += [friends_first[friend]]
-        else:
-            container_raw[name] = [friends_first[friend]]
-
-
 friends_second = {}
 
-for name in container_raw:
-    friends = set(
-        chain.from_iterable(container_raw[name])
-    ) - set([name] + friends_first[name])
-    friends_second[name] = sorted(friends)
+for name, direct_friends in friends_first.items():
+    fof = set(chain.from_iterable(friends_first[f] for f in direct_friends))
+    fof -= {name, *direct_friends}
+    friends_second[name] = sorted(fof)
 
 
-friends_second = dict(sorted(friends_second.items()))
-
-for name, friends in friends_second.items():
-    print(f'{name}: {", ".join(friends)}')
+for name in sorted(friends_second):
+    print(f"{name}: {', '.join(friends_second[name])}")
 ```
 
 ### R. Карта сокровищ

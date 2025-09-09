@@ -100,20 +100,13 @@ for _ in product(DECKS, SUITS):
 
 ### H. Меню питания 2.0
 ```python
-from itertools import cycle
-
-
 porridges = [input() for _ in range(int(input()))]
 
 
 number = int(input())
 
-for _, porridge in enumerate(cycle(porridges)):
-    if _ < number:
-        print(porridge)
-        continue
-    else:
-        break
+for i in range(number):
+    print(porridges[i % len(porridges)])
 ```
 
 ### I. Таблица умножения 3.0

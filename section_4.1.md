@@ -96,16 +96,18 @@ def is_palindrome(feed):
 
 ### I. Простая задача 5.0
 ```python
-import math
-
-
-def is_prime(number: int) -> bool:
-    if number <= 1:
+def is_prime(n: int) -> bool:
+    if n <= 1:
         return False
-
-    for _ in range(2, 1 + int(math.sqrt(number))):
-        if number % _ == 0:
+    if n <= 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
             return False
+        i += 6
     return True
 ```
 
