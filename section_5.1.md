@@ -165,6 +165,15 @@ class Rectangle:
 
 ### H. Шашки
 ```python
+class Cell:
+
+    def __init__(self, state):
+        self.state = state
+
+    def status(self):
+        return self.state
+
+
 class Checkers:
 
     def __init__(self):
@@ -206,15 +215,6 @@ class Checkers:
             return Cell('B')
 
         return Cell('X')
-
-
-class Cell:
-
-    def __init__(self, state):
-        self.state = state
-
-    def status(self):
-        return self.state
 ```
 
 ### I. Очередь

@@ -486,12 +486,10 @@ with open(f_name_src, encoding='utf-8') as f_src:
 ```python
 FILE_NAME = 'numbers.num'
 
+numbers_sum = 0
 with open(FILE_NAME, 'rb') as file:
-    numbers = []
-    while True:
-        chunk = file.read(2)
-        if not chunk:
-            break
-        numbers.append(int.from_bytes(chunk, byteorder='big'))
-    print(sum(numbers) % 2 ** 16)
+    while chunk := file.read(2):
+        numbers_sum += int.from_bytes(chunk, byteorder='big')
+
+print(numbers_sum % 2 ** 16)
 ```

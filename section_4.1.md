@@ -79,11 +79,8 @@ def modern_print(prompt: str, prompts_tracked: set[str] = set()) -> None:
 
 ### G. Шахматный «обед»
 ```python
-from operator import sub
-
-
-def can_eat(start: tuple[int], final: tuple[int]) -> bool:
-    return sum(map(abs, map(sub, final, start))) == 3
+def can_eat(start: tuple[int, int, int], final: tuple[int, int, int]) -> bool:
+    return sum(abs(f - s) for s, f in zip(start, final)) == 3
 ```
 
 ### H. А роза упала на лапу Азора 7.0

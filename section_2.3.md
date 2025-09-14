@@ -58,14 +58,11 @@ print(gcd(int(input()), int(input())))
 
 ### G. НОК
 ```python
-def gcd(a: int, b: int) -> int:
-    while b:
-        a, b = b, a % b
-    return a
-
-
 def lcm(a: int, b: int) -> int:
-    return int(a * b / gcd(a, b))
+    x, y = a, b
+    while y:
+        x, y = y, x % y
+    return a * b // x
 
 
 print(lcm(int(input()), int(input())))
